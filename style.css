@@ -1,0 +1,130 @@
+body {
+    font-family: 'Open Sans';
+}
+.close{
+    color: #fff;
+    opacity: 1;
+}
+.headerColor{
+    background-color: #5CB85C;
+    color: #fff;
+}
+.modal-title{
+    font-size: 13px;
+    font-weight: 700;
+}
+.modal-body{background-color: #F5F5F4;}
+.nav-tabs>li>a {
+    font-size: 11px;
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 0;
+    background: #5cb85c;
+    color: #fff;
+}
+.nav-tabs>li.active>a{
+    font-size: 11px;
+    background-color: #fff;
+    color: #5CB85C;
+    border: 2px solid #5cb85c;
+    border-radius: 5px;
+}
+.nav-tabs>li>a:focus, .nav-tabs>li>a:hover{
+    background: #5cb85c;
+    color: #fff;
+    border: 1px solid #5cb85c;
+}
+.nav>li>a:focus, .nav>li>a:hover{
+    background: #5cb85c;
+    color: #fff;
+}
+.nav-tabs {
+    border-bottom: 2px solid #5cb85c;
+}
+.nav-tabs>li {
+    float: right;
+    margin-bottom: -2px;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    border: 2px solid #5cb85c;
+    color: #5cb85c;
+}
+
+.tabHeading{
+    font-size: 13px;
+    font-weight: 800;
+    color: #5cb85c;
+    margin: 15px 0;
+}
+
+.tableCls{
+    width: 100%;
+    float: left;
+}
+.tableCls th{
+    background: #5cb85c;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #B4CDD9;
+}
+.tableCls td{
+    border: 1px solid #B4CDD9;
+    background: #fff;
+    text-align: left;
+    padding: 10px;
+}
+.bdr-right{
+    border-right: 1px solid #B4CDD9;
+}
+.findSec{
+    padding: 10px 0;
+}
+.formSection{
+    padding-top: 25px;
+}
+.removeBtn{
+    float: right;
+}
+.addBtn{
+    float: right;
+}
+.inputField{
+    width: 100%;
+    float: left;
+}
+label{
+    font-size: 13px;
+    font-weight: 500;
+}
+.pagination_section{
+    width: 100%;
+    float: left;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.pagination_section input{
+    width: 7%;
+}
+.pagination_section .nextBtn{
+    border: 1px solid #5cb85c;
+    border-radius: 5px;
+    color: #5cb85c;
+}
+.pagination_section .okBtn{ 
+    background: #5cb85c;
+    border: 3px solid #5cb85c;
+    color: #fff;
+    border-radius: 5px;
+}
+.popModel{
+    margin: 10% auto;
+    padding: 15px;
+    display: flex;
+    background: #5cb85c;
+    color: #fff;
+    border: 1px solid #5cb85c;
+}

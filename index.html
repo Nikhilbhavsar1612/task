@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>index</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button class="popModel" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog" ng-app="myApp" ng-controller="myController">
+    <div class="modal-dialog modal-lg" style="width: 1200px;">
+      <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header headerColor">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Alert</h4>
+          </div>
+          <div class="modal-body">
+            <div class="with-nav-tabs">
+                <div class="panel-heading1">
+                  <ul class="nav nav-tabs">
+                      <li><a href="#tab1default" data-toggle="tab">Patient Specific Alerts</a></li>
+                      <li><a href="#tab2default" data-toggle="tab">DX Specific Alerts</a></li>
+                      <li><a href="#tab3default" data-toggle="tab">RX Specific Alerts</a></li>
+                      <li><a href="#tab4default" data-toggle="tab">Procedure Alerts</a></li>
+                      <li><a href="#tab5default" data-toggle="tab">DI Alerts</a></li>
+                      <li><a href="#tab6default" data-toggle="tab">Lab Alerts</a></li>
+                      <li class="active"><a href="#tab7default" data-toggle="tab">Immunisation Alerts</a></li>
+                  </ul>
+                </div>
+                <div class="panel-body">
+                  <div class="tab-content">
+                    <div class="tab-pane fade" id="tab1default"><h1 class="tabHeading">Patient Specific Alerts</h1></div>
+                    <div class="tab-pane fade" id="tab2default"><h1 class="tabHeading">DX Specific Alerts</h1></div>
+                    <div class="tab-pane fade" id="tab3default"><h1 class="tabHeading">RX Specific Alerts</h1></div>
+                    <div class="tab-pane fade" id="tab4default"><h1 class="tabHeading">Procedure Alerts</h1></div>
+                    <div class="tab-pane fade" id="tab5default"><h1 class="tabHeading">DI Alerts</h1></div>
+                    <div class="tab-pane fade" id="tab6default"><h1 class="tabHeading">Lab Alerts</h1></div>
+                    <div class="tab-pane fade in active" id="tab7default">
+                      <div class="row">
+                          <div class="col-md-6 bdr-right">
+                            <h1 class="tabHeading">Immunisation Alerts</h1>
+                            <div class="findSec">
+                              <label> Find </label>
+                              <input type="text" id="filterText">
+                              <!-- <button ng-click="filterMovies()">Search</button> -->
+                              <button class="removeBtn" ng-click="removeRow()">Delete</button>
+                            </div>
+                              <table class="tableCls">
+                                  <tr>
+                                      <th><input type="checkbox" ng-model="movies.Remove"/></th>
+                                      <th>Name</th>
+                                      <th>Description</th>
+                                      <th>Web Reference</th>
+                                  </tr>
+                                  <tr ng-repeat="lab in labArray">
+                                    <td><input type="checkbox" ng-model="lab.Remove"/></td>
+                                    <!-- <td><label>{{$index + 1}}</label></td> -->
+                                    <td>{{lab.name}}</td>
+                                    <td>{{lab.description}}</td>
+                                    <td>{{lab.webReference}}</td>
+                                </tr>
+                                </table>
+                                
+                          </div>
+                          <div class="col-md-6">
+                            <div class="formSection">
+                              <div class="col-md-6">
+                                  <label for="fname">Name</label><br><br>
+                                  <label for="lname">desc</label><br><br>
+                                  <label for="lname">Web Reference</label><br><br>
+                              </div>
+                              <div class="col-md-6">
+                                  <input class="inputField" type="text" ng-model="name" /><br><br>
+                                  <input class="inputField" type="text" ng-model="description"/><br><br>
+                                  <input class="inputField" type="text" ng-model="webReference"/><br><br>
+                                  <button class="addBtn" ng-click="addRow()">Add</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="pagination_section">
+                              <div class="">
+                                <label>Total Result : 250</label>
+                                <span>Page <input class="" type="text" placeholder="10"> of 50</span>
+                                &nbsp; &nbsp;
+                                <button class="nextBtn"> < </button>
+                                <button class="nextBtn"> > </button>
+                              </div>
+                              <div class="">
+                                <button class="" ng-click="">Cancel</button>
+                                <button class="okBtn" ng-click="">Ok</button>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+     var app = angular.module('myApp', []);
+     app.controller('myController', function ($scope) {
+         // JSON ARRAY TO POPULATE TABLE.
+         $scope.labArray =
+         [
+            {
+            "id": 1,
+            "name": "Andrews Phillip",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Sam X Williams"
+          },
+          {
+            "id": 2,
+            "name": "Dillard Mauleen",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Andy Anthony"
+          },
+          {
+            "id": 3,
+            "name": "Miller Jessica",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Mark Twian"
+          },
+          {
+            "id": 4,
+            "name": "Marcus Brownless",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Phillip Melo"
+          },
+          {
+            "id": 5,
+            "name": "Jake Peralta",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Andy Anthony"
+          },
+          {
+            "id": 6,
+            "name": "Adam Lewy",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Andy Anthony"
+          },
+          {
+            "id": 7,
+            "name": "Anthony Hopkins",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Terry Christie"
+          },
+          {
+            "id": 8,
+            "name": "Sebastian Vettel",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "George Lecrec"
+          },
+          {
+            "id": 9,
+            "name": "John Ralfion",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Andy Anthony"
+          },
+          {
+            "id": 10,
+            "name": "Leslie Knope",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "April Ludgate"
+          },
+          {
+            "id": 11,
+            "name": "Rom Swanson",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Andrew Bernard"
+          },
+          {
+            "id": 12,
+            "name": "Jimothy Halpert",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Jack Ryan"
+          },
+          {
+            "id": 13,
+            "name": "Michael Scott",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Prison Mike"
+          },
+          {
+            "id": 14,
+            "name": "Walter White",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Albert S Crews"
+          },
+          {
+            "id": 15,
+            "name": "Sheldon Cooper",
+            "description": "Contrary to popular belief, Lorem",
+            "webReference": "Craig McMullam"
+          }
+      ];
+ 
+         // GET VALUES FROM INPUT BOXES AND ADD A NEW ROW TO THE TABLE.
+         $scope.addRow = function () {
+             if ($scope.name != undefined && $scope.description != undefined && $scope.webReference != undefined ) {
+                 var movie = [];
+                 movie.name = $scope.name;
+                 movie.description = $scope.description;
+                 movie.webReference = $scope.webReference;
+                 $scope.labArray.push(movie);
+ 
+                 // CLEAR TEXTBOX.
+                 $scope.name = null;
+                 $scope.description = null;
+                 $scope.webReference = null;
+             }
+         };
+ 
+         // REMOVE SELECTED ROW(s) FROM TABLE.
+         $scope.removeRow = function () {
+             var arrMovie = [];
+             angular.forEach($scope.labArray, function (value) {
+                 if (!value.Remove) {
+                     arrMovie.push(value);
+                 }
+             });
+             $scope.labArray = arrMovie;
+         };
+ 
+         // FINALLY SUBMIT THE DATA.
+         $scope.submit = function () {
+             var arrMovie = [];
+             angular.forEach($scope.labArray, function (value) {
+                 arrMovie.push('Name:' + value.name + ', Description:' + value.description + ', webReference:' + value.webReference);
+             });
+             $scope.display = arrMovie;
+         };
+     });
+     
+ </script>
+</body>
+</html>
